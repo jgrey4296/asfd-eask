@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# https://asdf-vm.com/plugins/create.html#bin-list-all
+# # List all installable versions
+# must print a string of space separated versions, newest last
+
+set -euo pipefail
+
+current_script_path=${BASH_SOURCE[0]}
+plugin_dir=$(dirname "$(dirname "$current_script_path")")
+
+# shellcheck source=./lib/utils.bash
+source "${plugin_dir}/lib/utils.bash"
+
+list_all_versions | sort_versions | xargs echo
